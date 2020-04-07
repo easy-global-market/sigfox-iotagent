@@ -19,7 +19,7 @@ NOTE: this first version doesn't support Configuration provisioning, so each dev
 In order to start the agent, execute the following command from the root of the project:
 
 ```bash
-bin/iotagent
+bin/iotagent-sigfox
 ```
 
 ### Provisioning the device in the Agent
