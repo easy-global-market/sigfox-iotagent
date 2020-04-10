@@ -33,7 +33,7 @@ var iotAgent = require('../../lib/iotagentCore'),
     should = require('should'),
     sigfoxDevice = {
         id: 'sigApp1',
-        type: 'SIGFOX',
+        type: 'Device',
         commands: [],
         lazy: [],
         active: [

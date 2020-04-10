@@ -84,7 +84,7 @@ describe('Plugin configuration test', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query('sigApp3', 'SIGFOX', [], function(error, response, body) {
+                    ngsiClient.query('sigApp3', 'Device', [], function(error, response, body) {
                         var attributes;
 
                         should.not.exist(error);

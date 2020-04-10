@@ -103,7 +103,7 @@ describe('Device and configuration provisioning', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query('sigApp2', 'SIGFOX', [], function(error, response, body) {
+                    ngsiClient.query('sigApp2', 'Device', [], function(error, response, body) {
                         var attributes;
 
                         should.not.exist(error);
