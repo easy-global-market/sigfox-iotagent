@@ -26,14 +26,15 @@ var MongoClient = require('mongodb').MongoClient,
     async = require('async');
 
 function cleanDb(host, name, callback) {
-    var url = 'mongodb://' + host + ':27017/' + name;
+    const url = 'mongodb://' + host + ':27017/' + name;
 
     MongoClient.connect(
         url,
         function(err, db) {
             if (db) {
-                db.dropDatabase();
-                db.close();
+                db.dropDatabase().then(function() {
+                    db.close(true).then();
+                });
             }
             callback();
         }
@@ -48,9 +49,7 @@ function cleanDbs(host, callback) {
         ],
         remoteDatabases = ['smartgondor', 'dumbmordor'];
 
-    for (var i in remoteDatabases) {
-        operations.push(async.apply(cleanDb, host, 'orion-' + remoteDatabases[i]));
-    }
+    remoteDatabases.forEach((database) => operations.push(async.apply(cleanDb, host, 'orion-' + database)));
 
     async.series(operations, callback);
 }
