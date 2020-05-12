@@ -93,6 +93,23 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
     request(options, callback);
 }
 
+function queryEntityNgsiLD(host, port, service, subservice, id, type, attributes, callback) {
+    const ngsiLdId = 'urn:ngsi-ld:' + type + ':' + id;
+    const options = {
+        url: 'http://' + host + ':' + port + '/ngsi-ld/v1/entities/' + ngsiLdId,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/ld+json',
+            Accept: 'application/ld+json'
+        },
+        qs: {
+            attributes: attributes
+        }
+    };
+
+    request(options, callback);
+}
+
 /**
  * Get the context providers for a list of attributes of an entity.
  *
@@ -127,17 +144,25 @@ function discoverContextAvailability(host, port, service, subservice, id, type, 
     request(options, callback);
 }
 
-function createClient(host, port, service, subservice) {
+function createClient(host, port, ngsiVersion, service, subservice) {
     /*jshint validthis:true */
 
-    return {
-        query: queryEntity.bind(null, host, port, service, subservice),
-        update: updateEntity.bind(null, host, port, service, subservice),
-        discover: discoverContextAvailability.bind(null, host, port, service, subservice)
-    };
+    if (ngsiVersion === 'ld')
+        return {
+            query: queryEntityNgsiLD.bind(null, host, port, service, subservice),
+            update: updateEntity.bind(null, host, port, service, subservice),
+            discover: discoverContextAvailability.bind(null, host, port, service, subservice)
+        };
+    else
+        return {
+            query: queryEntity.bind(null, host, port, service, subservice),
+            update: updateEntity.bind(null, host, port, service, subservice),
+            discover: discoverContextAvailability.bind(null, host, port, service, subservice)
+        };
 }
 
 exports.updateEntity = updateEntity;
 exports.queryEntity = queryEntity;
+exports.queryLdEntity = queryEntityNgsiLD;
 exports.discoverContext = discoverContextAvailability;
 exports.create = createClient;

@@ -36,6 +36,7 @@ var iotAgent = require('../../lib/iotagentCore'),
     ngsiClient = ngsiTestUtils.create(
         config.iota.contextBroker.host,
         config.iota.contextBroker.port,
+        config.iota.contextBroker.ngsiVersion,
         'dumbMordor',
         '/deserts'
     );
