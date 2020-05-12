@@ -38,15 +38,18 @@ config.iota = {
     server: {
         port: 4041
     },
+    mongodb: {
+        host: 'localhost'
+    },
     deviceRegistry: {
-        type: 'memory'
+        type: 'mongodb'
     },
     types: {},
     service: 'dumbMordor',
     subservice: '/deserts',
     providerUrl: 'http://localhost:4041',
     deviceRegistrationDuration: 'P1M',
-    defaultType: 'Thing',
+    defaultType: 'Device',
     defaultResource: '/iot/sigfox'
 };
 
