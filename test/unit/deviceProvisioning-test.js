@@ -111,10 +111,12 @@ describe('Device and configuration provisioning', function() {
                         should.exist(body);
                         should.not.exist(body.errorCode);
 
-                        attributes = body.contextResponses[0].contextElement.attributes;
+                        const jsonResponse = JSON.parse(body);
 
-                        _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
-                        _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
+                        jsonResponse.id.should.equal('urn:ngsi-ld:Device:sigApp2');
+                        jsonResponse.type.should.equal('Device');
+                        should.exist(jsonResponse.theCounter);
+                        should.exist(jsonResponse.theParam1);
 
                         done();
                     });

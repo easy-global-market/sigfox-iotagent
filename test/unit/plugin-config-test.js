@@ -36,6 +36,7 @@ var iotAgent = require('../../lib/iotagentCore'),
     ngsiClient = ngsiTestUtils.create(
         config.iota.contextBroker.host,
         config.iota.contextBroker.port,
+        config.iota.contextBroker.ngsiVersion,
         'dumbMordor',
         '/deserts'
     );
@@ -91,10 +92,13 @@ describe('Plugin configuration test', function() {
                         should.exist(body);
                         should.not.exist(body.errorCode);
 
-                        attributes = body.contextResponses[0].contextElement.attributes;
+                        console.log(body);
+                        const jsonResponse = JSON.parse(body);
 
-                        _.contains(_.pluck(attributes, 'name'), 'campo1').should.equal(true);
-                        _.contains(_.pluck(attributes, 'name'), 'campo2').should.equal(true);
+                        jsonResponse.id.should.equal('urn:ngsi-ld:Device:sigApp3');
+                        jsonResponse.type.should.equal('Device');
+                        should.exist(jsonResponse.campo1);
+                        should.exist(jsonResponse.campo2);
 
                         done();
                     });

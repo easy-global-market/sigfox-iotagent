@@ -31,7 +31,7 @@ config.iota = {
     logLevel: 'FATAL',
     contextBroker: {
         host: 'localhost',
-        port: '8082',
+        port: '10026',
         ngsiVersion: 'ld',
         jsonLdContext: 'https://schema.lab.fiware.org/ld/context.jsonld'
     },
