@@ -1,0 +1,43 @@
+[
+    {
+      "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+      "time": {
+        "type": "Property",
+        "value": "1430909015"
+      },
+      "statin": {
+        "type": "Property",
+        "value": "0A5F"
+      },
+      "lng": {
+        "type": "Property",
+        "value": "-4"
+      },
+      "lat": {
+        "type": "Property",
+        "value": "41"
+      },
+      "counter": {
+        "type": "Property",
+        "value": 2
+      },
+      "param1": {
+        "type": "Property",
+        "value": 0
+      },
+      "param2": {
+        "type": "Property",
+        "value": 0
+      },
+      "tempDegreesCelsius": {
+        "type": "Property",
+        "value": 35
+      },
+      "voltage": {
+        "type": "Property",
+        "value": 3183
+      },
+      "id": "urn:ngsi-ld:Device:sigApp1",
+      "type": "Device"
+    }
+  ]

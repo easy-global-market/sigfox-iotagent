@@ -1,0 +1,58 @@
+[
+    {
+      "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+      "id": "urn:ngsi-ld:Device:sigApp2",
+      "type": "Device",
+      "time": {
+        "type": "Property",
+        "value": " "
+      },
+      "statin": {
+        "type": "Property",
+        "value": " "
+      },
+      "lng": {
+        "type": "Property",
+        "value": " "
+      },
+      "lat": {
+        "type": "Property",
+        "value": " "
+      },
+      "theCounter": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      },
+      "theParam1": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      },
+      "param2": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      },
+      "tempDegreesCelsius": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      },
+      "voltage": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      }
+    }
+  ]

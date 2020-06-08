@@ -26,20 +26,13 @@ var iotAgent = require('../../lib/iotagentCore'),
     _ = require('underscore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
-    ngsiTestUtils = require('../tools/ngsiUtils'),
     utils = require('../tools/utils'),
     mongoUtils = require('../tools/mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
     should = require('should'),
-    ngsiClient = ngsiTestUtils.create(
-        config.iota.contextBroker.host,
-        config.iota.contextBroker.port,
-        config.iota.contextBroker.ngsiVersion,
-        'dumbMordor',
-        '/deserts'
-    );
+    nock = require('nock');
 
 describe('Plugin configuration test', function() {
     beforeEach(function(done) {
@@ -77,6 +70,20 @@ describe('Plugin configuration test', function() {
                 }
             };
 
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningPluginRequest.json')
+            )
+            .reply(204);
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
+            )
+            .reply(204);
+
         it('should use the plugin to parse the device responses', function(done) {
             request(provisioningOpts, function(error, response, body) {
                 should.not.exist(error);
@@ -85,23 +92,7 @@ describe('Plugin configuration test', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query('sigApp3', 'Device', [], function(error, response, body) {
-                        var attributes;
-
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-
-                        console.log(body);
-                        const jsonResponse = JSON.parse(body);
-
-                        jsonResponse.id.should.equal('urn:ngsi-ld:Device:sigApp3');
-                        jsonResponse.type.should.equal('Device');
-                        should.exist(jsonResponse.campo1);
-                        should.exist(jsonResponse.campo2);
-
-                        done();
-                    });
+                    done();
                 });
             });
         });
