@@ -40,7 +40,7 @@ describe('Checking mandatory query fields', function() {
                 expect(data.name).to.equal('MANDATORY_FIELDS_NOT_FOUND');
 
                 expect(data.message).to.equal(
-                    'Some of the mandatory fields for the request were not found: ["id","data"]'
+                    'Some of the mandatory fields for the request were not found: ["id/device","data"]'
                 );
                 done();
             });
@@ -77,7 +77,9 @@ describe('Checking mandatory query fields', function() {
 
                 expect(data.name).to.equal('MANDATORY_FIELDS_NOT_FOUND');
 
-                expect(data.message).to.equal('Some of the mandatory fields for the request were not found: ["id"]');
+                expect(data.message).to.equal(
+                    'Some of the mandatory fields for the request were not found: ["id/device"]'
+                );
                 done();
             });
         });
@@ -110,7 +112,7 @@ describe('Checking mandatory query fields', function() {
                 expect(data.name).to.equal('MANDATORY_FIELDS_NOT_FOUND');
 
                 expect(data.message).to.equal(
-                    'Some of the mandatory fields for the request were not found: ["id","data"]'
+                    'Some of the mandatory fields for the request were not found: ["id/device","data"]'
                 );
                 done();
             });

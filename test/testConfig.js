@@ -42,7 +42,7 @@ config.iota = {
         host: 'localhost'
     },
     deviceRegistry: {
-        type: 'mongodb'
+        type: 'memory'
     },
     types: {},
     service: 'dumbMordor',
