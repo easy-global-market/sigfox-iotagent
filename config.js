@@ -255,6 +255,11 @@ config.iota = {
 };
 
 /**
+ * Port for the name of the field containing the id in the payload.
+ */
+//config.idFieldName: 'id'
+
+/**
  * Default API Key, to use with device that have been provisioned without a Configuration Group.
  */
 config.defaultKey = 'TEF';
