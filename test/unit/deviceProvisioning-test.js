@@ -121,4 +121,53 @@ describe('Device and configuration provisioning', function() {
     describe('When a new Sigfox configuration arrives to the IoT Agent with a right mapping', function() {
         it('should add the new mapping to the mappings module');
     });
+    describe('When a new Device provisioning arrives to the IoT Agent with a multi entity mapping', function() {
+        var provisioningOpts = {
+                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
+                method: 'POST',
+                json: utils.readExampleFile(
+                    './test/examples/deviceProvisioning/deviceProvisioningMultiEntityRequest.json'
+                ),
+                headers: {
+                    'fiware-service': 'dumbMordor',
+                    'fiware-servicepath': '/deserts'
+                }
+            },
+            dataOpts = {
+                url: 'http://localhost:17428/update',
+                method: 'GET',
+                qs: {
+                    id: 'Device1',
+                    time: 1430909015,
+                    data: '{"consumed": 10}'
+                }
+            };
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningMultiEntityRequest.json')
+            )
+            .reply(204);
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateMultiEntityRequest.json')
+            )
+            .reply(204);
+
+        it('should use the provided provisioning', function(done) {
+            request(provisioningOpts, function(error, response, body) {
+                should.not.exist(error);
+
+                request(dataOpts, function(error, response, body) {
+                    should.not.exist(error);
+                    response.statusCode.should.equal(200);
+
+                    done();
+                });
+            });
+        });
+    });
 });
