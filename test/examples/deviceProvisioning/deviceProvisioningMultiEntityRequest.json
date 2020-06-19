@@ -1,0 +1,37 @@
+{
+    "devices": [
+        {
+            "device_id": "Device1",
+            "protocol": "SIGFOX",
+            "entity_name": "Device1",
+            "entity_type": "Device",
+            "timezone": "America/Santiago",
+            "attributes": [
+                {
+                    "name": "time",
+                    "type": "String"
+                },
+                {
+                    "name": "consumed",
+                    "entity_name": "Consumer1",
+                    "entity_type": "Consumer",
+                    "type": "Property"
+                },
+                {
+                    "name": "minFlow",
+                    "entity_name": "Consumer1",
+                    "entity_type": "Consumer",
+                    "type": "Property"
+                }
+            ],
+            "lazy": [],
+            "static_attributes": [],
+            "commands": [],
+            "internal_attributes": [
+                {
+                  "plugin": "../test/examples/plugins/jsonPlugin"
+                }
+            ]
+        }
+    ]
+}
