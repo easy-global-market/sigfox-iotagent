@@ -163,7 +163,56 @@ describe('Device and configuration provisioning', function() {
             )
             .reply(204);
 
-        it('should use the provided provisioning', function(done) {
+        it('should use the provided provisioning with multientity', function(done) {
+            request(provisioningOpts, function(error, response, body) {
+                should.not.exist(error);
+
+                request(dataOpts, function(error, response, body) {
+                    should.not.exist(error);
+                    response.statusCode.should.equal(200);
+
+                    done();
+                });
+            });
+        });
+    });
+    describe('When a new Device provisioning arrives to the IoT Agent with a observedAt query', function() {
+        var provisioningOpts = {
+                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
+                method: 'POST',
+                json: utils.readExampleFile(
+                    './test/examples/deviceProvisioning/deviceProvisioningTimestampRequest.json'
+                ),
+                headers: {
+                    'fiware-service': 'dumbMordor',
+                    'fiware-servicepath': '/deserts'
+                }
+            },
+            dataOpts = {
+                url: 'http://localhost:17428/update',
+                method: 'GET',
+                qs: {
+                    id: 'Device2',
+                    observedAt: 1430909015,
+                    data: '{"consumed": 10}'
+                }
+            };
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningTimestampRequest.json')
+            )
+            .reply(204);
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateTimestampRequest.json')
+            )
+            .reply(204);
+
+        it('should use the provided provisioning with timestamp', function(done) {
             request(provisioningOpts, function(error, response, body) {
                 should.not.exist(error);
 
