@@ -15,8 +15,13 @@
                     "name": "consumed",
                     "entity_name": "Consumer1",
                     "entity_type": "Consumer",
-                    "type": "Property",
-                    "object_id": "consumed"
+                    "type": "Property"
+                },
+                {
+                    "name": "minFlow",
+                    "entity_name": "Consumer1",
+                    "entity_type": "Consumer",
+                    "type": "Property"
                 }
             ],
             "lazy": [],
