@@ -23,6 +23,7 @@
 'use strict';
 
 const iotAgent = require('../../lib/iotagentCore'),
+    iotAgentLib = require('iotagent-node-lib'),
     _ = require('underscore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
@@ -44,8 +45,11 @@ describe('Device and configuration provisioning', function() {
     });
 
     afterEach(function(done) {
-        iotAgent.stop(done);
+        iotAgentLib.resetMiddlewares(function(error) {
+            iotAgent.stop(done);
+        });
     });
+
     describe('When a new Device provisioning arrives to the IoT Agent without internal mapping', function() {
         var provisioningOpts = {
             url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
@@ -139,7 +143,7 @@ describe('Device and configuration provisioning', function() {
                 qs: {
                     id: 'Device1',
                     time: 1430909015,
-                    data: '{"consumed": 10}'
+                    data: '{"consumed": 10, "minFlow": 20}'
                 }
             };
 

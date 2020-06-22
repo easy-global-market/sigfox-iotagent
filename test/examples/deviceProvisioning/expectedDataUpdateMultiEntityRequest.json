@@ -14,6 +14,10 @@
             "type": "Property",
             "value": 10
         },
+        "minFlow": {
+            "type": "Property",
+            "value": 20
+        },
         "type": "Consumer",
         "id": "urn:ngsi-ld:Consumer:Consumer1"
     }
