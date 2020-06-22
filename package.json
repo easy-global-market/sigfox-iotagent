@@ -33,14 +33,16 @@
     "watch": "watch 'npm test && npm run lint' ./lib ./test"
   },
   "dependencies": {
-    "underscore": "1.8.3",
-    "command-node": "0.1.1",
-    "request": "2.88.0",
     "async": "1.5.2",
-    "iotagent-node-lib": "git://github.com/easy-global-market/iotagent-node-lib.git#feature/stellio-ngsi-ld-integration",
-    "express": "4.16.4",
     "body-parser": "1.18.3",
-    "logops": "2.1.0"
+    "command-node": "0.1.1",
+    "esm": "^3.2.25",
+    "express": "4.16.4",
+    "iotagent-node-lib": "git://github.com/easy-global-market/iotagent-node-lib.git#feature/stellio-ngsi-ld-integration",
+    "logops": "2.1.0",
+    "moment": "^2.27.0",
+    "request": "2.88.0",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "coveralls": "~3.0.2",
