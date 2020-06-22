@@ -1,0 +1,25 @@
+{
+    "devices": [
+        {
+            "device_id": "Device2",
+            "protocol": "SIGFOX",
+            "entity_name": "Device2",
+            "entity_type": "Device",
+            "timezone": "America/Santiago",
+            "attributes": [
+                {
+                    "name": "consumed",
+                    "type": "Property"
+                }
+            ],
+            "lazy": [],
+            "static_attributes": [],
+            "commands": [],
+            "internal_attributes": [
+                {
+                  "plugin": "../test/examples/plugins/jsonPlugin"
+                }
+            ]
+        }
+    ]
+}

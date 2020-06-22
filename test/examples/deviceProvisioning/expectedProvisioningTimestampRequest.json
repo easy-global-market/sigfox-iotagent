@@ -1,0 +1,11 @@
+[
+    {
+        "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+        "id": "urn:ngsi-ld:Device:Device2",
+        "type": "Device",
+        "consumed": {
+            "type": "Property",
+            "value": " "
+        }
+    }
+]
