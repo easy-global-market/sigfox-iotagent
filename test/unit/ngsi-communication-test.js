@@ -128,8 +128,8 @@ describe('Context Broker communication', function() {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:sigApp1/attrs',
                 utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceUpdateDataRequest.json')
             )
             .reply(204);

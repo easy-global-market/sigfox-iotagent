@@ -102,8 +102,8 @@ describe('Device and configuration provisioning', function() {
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:sigApp2/attrs',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateRequest.json')
             )
             .reply(204);
@@ -157,9 +157,18 @@ describe('Device and configuration provisioning', function() {
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:Device1/attrs',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateMultiEntityRequest.json')
+            )
+            .reply(204);
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Consumer:Consumer1/attrs',
+                utils.readExampleFile(
+                    './test/examples/deviceProvisioning/expectedDataUpdateMultiEntityRequestConsumer.json'
+                )
             )
             .reply(204);
 
@@ -206,8 +215,8 @@ describe('Device and configuration provisioning', function() {
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:Device2/attrs',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateTimestampRequest.json')
             )
             .reply(204);
