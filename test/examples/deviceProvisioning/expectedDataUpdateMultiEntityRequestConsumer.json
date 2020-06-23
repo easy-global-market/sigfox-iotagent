@@ -1,0 +1,10 @@
+{
+    "consumed": {
+        "type": "Property",
+        "value": 10
+    },
+    "minFlow": {
+        "type": "Property",
+        "value": 20
+    }
+}

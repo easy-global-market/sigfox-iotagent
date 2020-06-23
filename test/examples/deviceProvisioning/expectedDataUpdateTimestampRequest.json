@@ -1,12 +1,7 @@
-[
-    {
-        "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
-        "id": "urn:ngsi-ld:Device:Device2",
-        "type": "Device",
-        "consumed": {
-            "type": "Property",
-            "value": 10,                
-            "observedAt": "2015-05-06T10:43:35.000Z"
-        }
+{
+    "consumed": {
+        "type": "Property",
+        "value": 10,
+        "observedAt": "2015-05-06T10:43:35.000Z"
     }
-]
+}

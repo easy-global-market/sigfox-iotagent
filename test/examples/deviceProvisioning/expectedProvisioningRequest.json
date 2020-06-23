@@ -1,6 +1,6 @@
 [
     {
-      "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+      "@context": ["https://schema.lab.fiware.org/ld/context.jsonld"],
       "id": "urn:ngsi-ld:Device:sigApp2",
       "type": "Device",
       "time": {

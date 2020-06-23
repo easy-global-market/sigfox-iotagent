@@ -78,8 +78,8 @@ describe('Plugin configuration test', function() {
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
+            .patch(
+                '/ngsi-ld/v1/entities/urn:ngsi-ld:Device:sigApp3/attrs',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
             )
             .reply(204);
