@@ -1,11 +1,28 @@
 [
     {
-        "@context": ["https://schema.lab.fiware.org/ld/context.jsonld"],
+        "@context": [
+            "https://schema.lab.fiware.org/ld/context.jsonld"
+        ],
         "id": "urn:ngsi-ld:Device:Device1",
         "type": "Device",
         "time": {
             "type": "Property",
             "value": " "
         }
+    },
+    {
+        "@context": [
+            "https://schema.lab.fiware.org/ld/context.jsonld"
+        ],
+        "consumed": {
+            "type": "Property",
+            "value": " "
+        },
+        "minFlow": {
+            "type": "Property",
+            "value": " "
+        },
+        "type": "Consumer",
+        "id": "urn:ngsi-ld:Consumer:Consumer1"
     }
 ]
