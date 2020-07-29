@@ -32,8 +32,8 @@ const async = require('async');
 const apply = async.apply;
 const config = require('../testConfig');
 const should = require('should');
-const nock = require('nock'),
-const utils = require('../tools/utils'),
+const nock = require('nock');
+const utils = require('../tools/utils');
 const sigfoxDevice = {
     id: 'sigApp1',
     type: 'SIGFOX',
