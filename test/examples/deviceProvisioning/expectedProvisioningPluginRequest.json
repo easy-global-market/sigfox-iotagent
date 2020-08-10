@@ -21,17 +21,11 @@
       },
       "campo1": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       },
       "campo2": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       }
     }
   ]

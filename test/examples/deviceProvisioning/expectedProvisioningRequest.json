@@ -21,38 +21,23 @@
       },
       "theCounter": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       },
       "theParam1": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       },
       "param2": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       },
       "tempDegreesCelsius": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       },
       "voltage": {
         "type": "Property",
-        "value": {
-          "@type": "Intangible",
-          "@value": null
-        }
+        "value": 0
       }
     }
   ]
