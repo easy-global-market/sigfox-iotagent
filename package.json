@@ -38,7 +38,7 @@
     "command-node": "0.1.1",
     "esm": "^3.2.25",
     "express": "4.16.4",
-    "iotagent-node-lib": "git://github.com/easy-global-market/iotagent-node-lib.git#feature/stellio-ngsi-ld-integration",
+    "iotagent-node-lib": "git://github.com/easy-global-market/iotagent-node-lib.git#feature/stellio-ngsi-ld-integration-fixed",
     "logops": "2.1.0",
     "moment": "^2.27.0",
     "request": "2.88.0",
